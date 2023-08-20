@@ -7,7 +7,7 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import Common.BasePage;
-import pageUIs.CustomerPageUI;
+import pageUIs.users.CustomerPageUI;
 
 public class CustomerPageObject extends BasePageFactory {
 	 WebDriver driver;

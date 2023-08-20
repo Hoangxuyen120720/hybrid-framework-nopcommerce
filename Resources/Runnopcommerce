@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite parallel="false" name="NopCommerce UI Automation">
 
- <parameter name="url" value="https://demo.nopcommerce.com/" />
 
-  
   
   <test name="Run on Firefox">
    <parameter name="browser" value="Firefox" />
     <classes>
-      <class name="com.nopcommerce.users.Level_05_Page_Factory"/>
-
+      <class name="com.nopcommerce.users.Level_09_Switch_Site_ULR"/>
+                                         
     </classes>
   </test> 
   

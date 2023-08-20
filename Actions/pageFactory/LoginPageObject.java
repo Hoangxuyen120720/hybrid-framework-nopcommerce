@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import pageUIs.LoginpageUI;
+import pageUIs.users.LoginpageUI;
 
 public class LoginPageObject extends BasePageFactory {
 	private WebDriver driver;
@@ -27,7 +27,12 @@ public class LoginPageObject extends BasePageFactory {
 	WebElement loginButton;
 	
 	
-	
+	public HomePageObject loginAsUser(String emailAddress, String password) {
+		enterToEmailTextbox(emailAddress);
+		enterToPasswordNameTextbox(password);
+		clickToLoginButton();
+		return new HomePageObject(driver);
+	}
 	
 
 	public void enterToEmailTextbox(String emailAddress) {

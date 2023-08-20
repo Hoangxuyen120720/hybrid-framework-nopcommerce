@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import Common.BasePage;
-import pageUIs.RegisterPageUI;
+import pageUIs.users.RegisterPageUI;
 
 public class RegisterPageObject extends BasePageFactory{
 
@@ -93,10 +93,10 @@ public class RegisterPageObject extends BasePageFactory{
 		return	getElementText(driver, confirmPassWordErrorMsg);
 	}
 
-	public void clickToHomePageLogo() {
+	public HomePageObject clickToHomePageLogo() {
 		waitForElementClickable(driver, homePageLogoImg);
 		clickToElement(driver, homePageLogoImg);
-		
+		return new HomePageObject(driver);
 	}
 
 	public void enterToFirstNameTextbox(String firstName) {

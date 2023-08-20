@@ -28,7 +28,7 @@ public class Level_05_Page_Factory extends BaseTest{
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
-       driver = grtBrowserDriver( browserName);
+       driver = getBrowserDriver( browserName);
 	}
 
 	@Test
@@ -138,8 +138,7 @@ public class Level_05_Page_Factory extends BaseTest{
 		homePage.clickLoginLink();
 		loginPage = new LoginPageObject(driver);
 
-		loginPage.enterToEmailTextbox(getEmailAddress());
-		loginPage.enterToPasswordNameTextbox("123456");
+		loginPage.loginAsUser(emailAddress, "123456");
 
 		loginPage.clickToLoginButton();
 

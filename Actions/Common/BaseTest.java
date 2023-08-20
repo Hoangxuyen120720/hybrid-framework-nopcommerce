@@ -21,7 +21,7 @@ public class BaseTest {
 
 	private String projectPath = System.getProperty("user.dir");
 
-	protected WebDriver grtBrowserDriver(String browserName) {
+	protected WebDriver getBrowserDriver(String browserName) {
 
 		/*
 		 * if (browserName.equalsIgnoreCase("Chrome")) {
@@ -81,7 +81,52 @@ public class BaseTest {
 		driver.manage().window().setSize(new Dimension(1280, 1024));
 		driver.manage().window().setPosition(new Point(0, 0));
 		//driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalContants.LONG_TIMEOUT));
+
+		return driver;
+	}
+	
+	protected WebDriver getBrowserDriver(String browserName, String userUrl) {
+
+		BrowserList browserList = BrowserList.valueOf(browserName.toUpperCase());
+		switch (browserList) {
+		case CHROME:
+
+			// tu tai chrome driver tuong ung voi chrome browser xong khoi tao len
+			//driver = WebDriverManager.chromedriver().create();
+
+			driver = new ChromeDriver();
+			break;
+		case FIREFOX:
+			
+			driver = new FirefoxDriver();
+			//driver = WebDriverManager.firefoxdriver().create();
+			/*
+			 * System.setProperty("webdriver.gecko.driver", projectPath +
+			 * "\\browserDrivers\\geckodriver.exe"); driver = new FirefoxDriver();
+			 */
+			break;
+		case EDGE:
+			
+			driver = new EdgeDriver();
+			//driver = WebDriverManager.edgedriver().create();
+			/*
+			 * System.setProperty("webdriver.edge.driver", projectPath +
+			 * "\\browserDrivers\\msedgedriver.exe"); driver = new EdgeDriver();
+			 */
+			break;
+
+		default:
+			throw new RuntimeException("Browser name is not vailid");
+		}
+
+		System.out.println("Driver at Basetest: " + driver.toString());
+
+		driver.get(userUrl);
+		driver.manage().window().setSize(new Dimension(1280, 1024));
+		driver.manage().window().setPosition(new Point(0, 0));
+		//driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalContants.LONG_TIMEOUT));
 
 		return driver;
 	}

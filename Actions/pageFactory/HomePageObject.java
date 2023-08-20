@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import pageUIs.HomePageUI;
+import pageUIs.users.HomePageUI;
 
 public class HomePageObject extends BasePageFactory{
 
@@ -45,20 +45,22 @@ public class HomePageObject extends BasePageFactory{
 	
 	
 	
-	public void clickRegisterLink() {
+	public RegisterPageObject clickRegisterLink() {
 		waitForElementClickable(driver, registerLink);
 		clickToElement(driver, registerLink);
+		return new RegisterPageObject(driver);
 	}
 
-	public void clickLoginLink() {
+	public LoginPageObject clickLoginLink() {
 		waitForElementClickable(driver, loginLink);
 		clickToElement(driver, loginLink);
-		
+		return new LoginPageObject(driver);
 	}
 
-	public void clickTomyAccountLink() {
+	public CustomerPageObject clickTomyAccountLink() {
 		waitForElementClickable(driver, myAccountLink);
 		clickToElement(driver, myAccountLink);
+		return new CustomerPageObject(driver);
 		
 	}
 
